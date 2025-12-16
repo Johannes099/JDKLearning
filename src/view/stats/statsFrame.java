@@ -1,17 +1,16 @@
-package view;
+package view.stats;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class menuFrame extends JFrame {
-    public menuLayout menuLayout;
-    public menuFrame(){
-        this.menuLayout = new menuLayout();
+public class statsFrame extends JFrame {
+    public statsLayout statsLayout;
+    public statsFrame(){
+        this.statsLayout = new statsLayout();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("JDKLearning Tool");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        this.add(menuLayout);
+        this.add(statsLayout);
         this.setVisible(true);
 
     }

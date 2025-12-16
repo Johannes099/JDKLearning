@@ -1,5 +1,6 @@
-package view;
-import model.RoundedButtonUI;
+package view.menu;
+
+import view.RoundedButtonUI;
 
 import javax.swing.*;
 import java.awt.*;
