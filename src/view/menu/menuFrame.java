@@ -1,7 +1,6 @@
-package view;
+package view.menu;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class menuFrame extends JFrame {
     public menuLayout menuLayout;
