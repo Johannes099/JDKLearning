@@ -2,7 +2,7 @@ package view.eingabe;
 
 import javax.swing.*;
 import java.io.IOException;
-import view.menu.menuFrame;   // <- anpassen falls dein package anders heißt
+import view.menu.menuFrame;
 import model.eingabe.CsvWriter;
 
 public class EingabeController {
@@ -45,7 +45,7 @@ public class EingabeController {
     }
 
     private void onBeenden() {
-        frame.dispose();        // Eingabe schließen
-        new menuFrame();        // Menu öffnen
+        frame.dispose();
+        new menuFrame();
     }
 }

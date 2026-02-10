@@ -27,7 +27,6 @@ public class CsvWriter {
     private String toCsv(String s) {
         if (s == null) return "";
         String x = s.replace("\"", "\"\"");
-        // Wenn Komma/Zeilenumbruch/Anführungszeichen drin sind -> in "..."
         if (x.contains(",") || x.contains("\n") || x.contains("\r") || x.contains("\"")) {
             return "\"" + x + "\"";
         }

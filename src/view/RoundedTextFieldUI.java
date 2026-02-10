@@ -36,17 +36,14 @@ public class RoundedTextFieldUI extends BasicTextFieldUI {
         int w = c.getWidth();
         int h = c.getHeight();
 
-        // Hintergrund
         g2.setColor(c.getBackground());
         g2.fillRoundRect(0, 0, w - 1, h - 1, radius, radius);
 
-        // Border (leicht grau)
         g2.setColor(new Color(200, 200, 200));
         g2.drawRoundRect(0, 0, w - 1, h - 1, radius, radius);
 
         g2.dispose();
 
-        // Text + Caret + Selection
         super.paintSafely(g);
     }
 }

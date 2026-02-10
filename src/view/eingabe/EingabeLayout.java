@@ -48,7 +48,6 @@ public class EingabeLayout {
         );
         subtitle.setFont(new Font("SansSerif", Font.PLAIN, 34));
 
-        // Frage Block
         JPanel frageBlock = new JPanel(new GridLayout(2, 1, 0, 8));
         frageBlock.setBackground(Color.WHITE);
         JLabel frageLabel = new JLabel("Frage");
@@ -57,7 +56,6 @@ public class EingabeLayout {
         frageBlock.add(frageLabel);
         frageBlock.add(frage);
 
-        // Antwort Block
         JPanel antwortBlock = new JPanel(new GridLayout(2, 1, 0, 8));
         antwortBlock.setBackground(Color.WHITE);
         JLabel antwortLabel = new JLabel("Antwort");
@@ -66,7 +64,6 @@ public class EingabeLayout {
         antwortBlock.add(antwortLabel);
         antwortBlock.add(antwort);
 
-        // Buttons
         JPanel buttons = new JPanel(new GridLayout(1, 3, 20, 0));
         buttons.setBackground(Color.WHITE);
         buttons.add(beenden);
