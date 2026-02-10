@@ -26,20 +26,23 @@ public class menuLayout extends JPanel {
 
         this.quiz = new JButton("Quiz");
         quiz.setUI(new RoundedButtonUI(40));
+        this.quiz.setBackground(Color.LIGHT_GRAY);
         this.quiz.setPreferredSize(new Dimension(285, 80));
         this.game = new JButton("Game");
         game.setUI(new RoundedButtonUI(40));
         this.game.setPreferredSize(new Dimension(285, 80));
+        this.game.setBackground(Color.LIGHT_GRAY);
         this.enter = new JButton("Eingabe");
         enter.setUI(new RoundedButtonUI(40));
         this.enter.setPreferredSize(new Dimension(285, 80));
+        this.enter.setBackground(Color.LIGHT_GRAY);
         this.stats = new JButton("Stats");
         stats.setUI(new RoundedButtonUI(40));
-        this.stats.setPreferredSize(new Dimension(285, 80));
+        this.stats.setPreferredSize(new Dimension(285, 50));
         this.stats.setBackground(Color.BLUE);
         this.errors = new JButton("Errors");
         errors.setUI(new RoundedButtonUI(40));
-        this.errors.setPreferredSize(new Dimension(285, 80));
+        this.errors.setPreferredSize(new Dimension(285, 50));
         this.errors.setBackground(Color.RED);
         this.buttonRow.add(quiz);
         this.buttonRow.add(game);
