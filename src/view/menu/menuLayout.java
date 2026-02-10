@@ -61,5 +61,12 @@ public class menuLayout extends JPanel {
         this.add(mode, BorderLayout.CENTER);
         this.add(info, BorderLayout.SOUTH);
 
+        enter.addActionListener(e -> {
+            java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+            if (w != null) w.dispose();
+
+            new view.eingabe.EingabeFrame();
+        });
+
     }
 }
