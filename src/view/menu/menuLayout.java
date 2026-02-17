@@ -68,5 +68,12 @@ public class menuLayout extends JPanel {
             new view.eingabe.EingabeFrame();
         });
 
+        game.addActionListener(e -> {
+            java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+            if (w != null) w.dispose();
+
+            new view.game.GameSetupFrame();
+        });
+
     }
 }
