@@ -117,5 +117,11 @@ public class menuLayout extends JPanel {
             if (w != null) w.dispose();
             new view.stats.statsFrame();
         });
+
+        quiz.addActionListener(eq -> {
+            java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+            if (w != null) w.dispose();
+            new view.quiz.QuizFrame();
+        });
     }
 }
