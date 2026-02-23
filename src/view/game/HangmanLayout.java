@@ -31,7 +31,7 @@ public class HangmanLayout {
         frageLabel.setFont(new Font("SansSerif", Font.PLAIN, 28));
 
         wortAnzeige = new JLabel("", SwingConstants.CENTER);
-        wortAnzeige.setFont(new Font("SansSerif", Font.BOLD, 36));
+        wortAnzeige.setFont(new Font("SansSerif", Font.BOLD, 26));
         wortAnzeige.setHorizontalAlignment(SwingConstants.LEFT);
 
         eingabe = new JTextField();
@@ -46,6 +46,7 @@ public class HangmanLayout {
         beenden.setUI(new RoundedButtonUI(40));
         beenden.setBackground(Color.RED);
 
+
         JPanel buttonPanel = new JPanel(new GridLayout(1,2,20,0));
         buttonPanel.setBackground(Color.WHITE);
         buttonPanel.add(weiter);
@@ -58,7 +59,7 @@ public class HangmanLayout {
         left.add(eingabe);
         left.add(buttonPanel);
         left.add(fehler);
-        left.add(new JLabel("")); // leere Zeile für saubere Verteilung
+        left.add(new JLabel(""));
 
         // Linke Seite
         JPanel right = new JPanel(new GridLayout(3,1));

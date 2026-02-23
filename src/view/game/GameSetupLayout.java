@@ -11,6 +11,7 @@ public class GameSetupLayout {
     private JRadioButton standard;
     private JComboBox<String> amount;
     private JButton start;
+    private JButton beenden;
 
     public JPanel buildPanel() {
 
@@ -39,10 +40,19 @@ public class GameSetupLayout {
         start.setUI(new RoundedButtonUI(40));
         start.setBackground(Color.GREEN);
 
+        beenden = new JButton("Beenden");
+        beenden.setUI(new RoundedButtonUI(40));
+        beenden.setBackground(Color.RED);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1,2,20,0));
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.add(beenden);
+        buttonPanel.add(start);
+
         root.add(title);
         root.add(radioPanel);
         root.add(amount);
-        root.add(start);
+        root.add(buttonPanel);
 
         return root;
     }
@@ -51,4 +61,5 @@ public class GameSetupLayout {
     public JRadioButton getStandard(){ return standard; }
     public JComboBox<String> getAmount(){ return amount; }
     public JButton getStart(){ return start; }
+    public JButton getBeenden(){ return beenden; }
 }

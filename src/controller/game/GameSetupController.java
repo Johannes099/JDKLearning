@@ -4,6 +4,7 @@ import model.game.Question;
 import model.game.QuestionLoader;
 import view.game.GameSetupLayout;
 import view.game.HangmanFrame;
+import view.menu.menuFrame;
 
 
 import javax.swing.*;
@@ -17,7 +18,19 @@ public class GameSetupController {
         this.ui = ui;
         this.frame = frame;
 
-        ui.getStart().addActionListener(e -> start());
+        ui.getStart().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                start();
+            }
+        });
+
+        ui.getBeenden().addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beenden();
+            }
+        });
     }
 
     private void start() {
@@ -59,6 +72,11 @@ public class GameSetupController {
 
         frame.dispose();
         new HangmanFrame(fragen);
+    }
+
+    private void beenden(){
+        frame.dispose();
+        new menuFrame();
     }
 }
 

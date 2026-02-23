@@ -17,31 +17,46 @@ public class HangmanLogic {
     public boolean pruefe(String input){
 
         input = input.toLowerCase();
-        boolean allesRichtig = true;
 
-        for(int j = 0; j < input.length(); j++){
+        // Einzelner Buchstab
+        if(input.length() == 1){
 
-            char c = input.charAt(j);
-            boolean buchstabeGefunden = false;
+            char c = input.charAt(0);
+            boolean gefunden = false;
 
             for(int i = 0; i < buchstaben.length; i++){
                 if(buchstaben[i] == c){
                     sichtbar[i] = true;
-                    buchstabeGefunden = true;
+                    gefunden = true;
                 }
             }
 
-            if(!buchstabeGefunden){
-                allesRichtig = false;
+            if(!gefunden){
+                fehler++;
+            }
+
+            return gefunden;
+        }
+
+        // Mehrere Buchstaben
+        boolean wortRichtig = input.equals(wort);
+
+        for(int j = 0; j < input.length(); j++){
+
+            char c = input.charAt(j);
+
+            for(int i = 0; i < buchstaben.length; i++){
+                if(buchstaben[i] == c){
+                    sichtbar[i] = true;
+                }
             }
         }
 
-        // Wenns nicht genau das Wort ist, dann zählt es als Felhler
-        if(!input.equals(wort)){
+        if(!wortRichtig){
             fehler++;
         }
 
-        return allesRichtig;
+        return wortRichtig;
     }
 
     public String getAnzeige(){
@@ -86,4 +101,5 @@ public class HangmanLogic {
     public String getWort(){
         return wort;
     }
+
 }
