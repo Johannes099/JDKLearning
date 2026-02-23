@@ -1,19 +1,19 @@
 package controller.game;
 
 import model.game.HangmanLogic;
-import model.game.Question;          // NEU
+import model.game.Question;
 import view.game.HangmanLayout;
 import view.menu.menuFrame;
 
 import javax.swing.*;
+import java.util.Random;
 
 public class HangmanController {
 
     private final HangmanLayout ui;
     private final JFrame frame;
-    private final Question[] fragen;   // geändert
+    private final Question[] fragen;
 
-    private int index = 0;
     private HangmanLogic logic;
 
     public HangmanController(HangmanLayout ui, JFrame frame, Question[] fragen){
@@ -21,29 +21,30 @@ public class HangmanController {
         this.frame = frame;
         this.fragen = fragen;
 
-        startRunde();
+        startSpiel();
 
         ui.getWeiter().addActionListener(e -> pruefen());
         ui.getBeenden().addActionListener(e -> beenden());
     }
 
-    private void startRunde(){
-        if(index >= fragen.length){
-            JOptionPane.showMessageDialog(frame,"Gewonnen!");
+    private void startSpiel(){
+
+        if(fragen.length == 0){
+            JOptionPane.showMessageDialog(frame,"Keine Fragen vorhanden");
             frame.dispose();
             new menuFrame();
             return;
         }
 
-        Question aktuelle = fragen[index];
+        Random rand = new Random();
+        int zufall = rand.nextInt(fragen.length);
+
+        Question aktuelle = fragen[zufall];
 
         logic = new HangmanLogic(aktuelle.getAntwort());
 
-        ui.getFrageLabel().setText("Frage " + (index+1) + " von " + fragen.length);
-
-        // HIER steht jetzt die echte Frage
-        ui.getFrageTextLabel().setText(aktuelle.getFrage());
-
+        ui.getFrageLabel().setText(aktuelle.getFrage());
+        ui.getWortAnzeige().setText(logic.getAnzeige());
         ui.getFehler().setText("Fehler: 0 / 6");
         ui.getEingabe().setText("");
         ui.getHangmanPanel().setFehler(0);
@@ -54,20 +55,26 @@ public class HangmanController {
         String input = ui.getEingabe().getText().trim();
         if(input.isEmpty()) return;
 
-        if(logic.pruefe(input)){
-            index++;
-            startRunde();
-        } else {
-            int f = logic.getFehler();
-            ui.getFehler().setText("Fehler: " + f + " / 6");
-            ui.getHangmanPanel().setFehler(f);
+        logic.pruefe(input);
 
-            if(logic.gameOver()){
-                JOptionPane.showMessageDialog(frame,
-                        "Game Over! Wort war: " + logic.getWort());
-                frame.dispose();
-                new menuFrame();
-            }
+        ui.getWortAnzeige().setText(logic.getAnzeige());
+
+        int f = logic.getFehler();
+        ui.getFehler().setText("Fehler: " + f + " / 6");
+        ui.getHangmanPanel().setFehler(f);
+
+        if(logic.geloest()){
+            JOptionPane.showMessageDialog(frame,"Gewonnen!");
+            frame.dispose();
+            new menuFrame();
+            return;
+        }
+
+        if(logic.gameOver()){
+            JOptionPane.showMessageDialog(frame,
+                    "Game Over! Wort war: " + logic.getWort());
+            frame.dispose();
+            new menuFrame();
         }
 
         ui.getEingabe().setText("");
@@ -78,5 +85,3 @@ public class HangmanController {
         new menuFrame();
     }
 }
-
-

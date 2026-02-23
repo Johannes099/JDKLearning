@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class HangmanLayout {
 
+    private JLabel wortAnzeige;
     private JLabel frageLabel;
     private JLabel frageTextLabel;   // NEU
     private JTextField eingabe;
@@ -18,25 +19,26 @@ public class HangmanLayout {
 
     public JPanel buildPanel(){
 
-        // Hauptpanel
+
         JPanel root = new JPanel(new GridLayout(1,2));
         root.setBackground(Color.WHITE);
 
-        // Linke Seite (Spielbereich)
-        JPanel left = new JPanel(new GridLayout(6,1,15,15));
-        left.setBorder(BorderFactory.createEmptyBorder(40,80,40,80));
+        JPanel left = new JPanel(new GridLayout(6,1,20,20));
+        left.setBorder(BorderFactory.createEmptyBorder(80,120,80,120));
         left.setBackground(Color.WHITE);
 
-        frageLabel = new JLabel("Frage 1",SwingConstants.CENTER);
-        frageLabel.setFont(new Font("SansSerif",Font.PLAIN,36));
+        frageLabel = new JLabel("", SwingConstants.CENTER);
+        frageLabel.setFont(new Font("SansSerif", Font.PLAIN, 28));
 
-        // HIER statt festem Text
-        frageTextLabel = new JLabel("", SwingConstants.CENTER);
+        wortAnzeige = new JLabel("", SwingConstants.CENTER);
+        wortAnzeige.setFont(new Font("SansSerif", Font.BOLD, 36));
+        wortAnzeige.setHorizontalAlignment(SwingConstants.LEFT);
 
         eingabe = new JTextField();
+        eingabe.setHorizontalAlignment(SwingConstants.CENTER);
         eingabe.setUI(new RoundedTextFieldUI(40));
 
-        weiter = new JButton("Weiter");
+        weiter = new JButton("Bestätigen");
         weiter.setUI(new RoundedButtonUI(40));
         weiter.setBackground(Color.GREEN);
 
@@ -44,16 +46,21 @@ public class HangmanLayout {
         beenden.setUI(new RoundedButtonUI(40));
         beenden.setBackground(Color.RED);
 
-        fehler = new JLabel("Fehler: 0 / 6",SwingConstants.CENTER);
+        JPanel buttonPanel = new JPanel(new GridLayout(1,2,20,0));
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.add(weiter);
+        buttonPanel.add(beenden);
+
+        fehler = new JLabel("Fehler: 0 / 6", SwingConstants.CENTER);
 
         left.add(frageLabel);
-        left.add(frageTextLabel);   // statt subtitle
+        left.add(wortAnzeige);
         left.add(eingabe);
-        left.add(weiter);
-        left.add(beenden);
+        left.add(buttonPanel);
         left.add(fehler);
+        left.add(new JLabel("")); // leere Zeile für saubere Verteilung
 
-        // Rechte Seite
+        // Linke Seite
         JPanel right = new JPanel(new GridLayout(3,1));
         right.setBackground(Color.WHITE);
 
@@ -88,5 +95,6 @@ public class HangmanLayout {
     public JButton getBeenden(){ return beenden; }
     public JLabel getFehler(){ return fehler; }
     public HangmanPanel getHangmanPanel(){ return hangmanPanel; }
+    public JLabel getWortAnzeige(){ return wortAnzeige; }
 }
 

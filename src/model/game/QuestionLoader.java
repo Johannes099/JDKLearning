@@ -12,7 +12,7 @@ public class QuestionLoader {
 
             ArrayList<Question> list = new ArrayList<>();
 
-            br.readLine(); // Header überspringen
+            br.readLine();
 
             String line;
 

@@ -20,7 +20,6 @@ public class HangmanPanel extends JPanel {
 
         g2.setStroke(new BasicStroke(4));
 
-        // Galgen
         g2.drawLine(50, 250, 200, 250);
         g2.drawLine(125, 250, 125, 50);
         g2.drawLine(125, 50, 200, 50);
@@ -34,19 +33,19 @@ public class HangmanPanel extends JPanel {
         if (fehler >= 2)
             g2.drawLine(200, 130, 200, 180);
 
-        // Linker Arm
+        // Rechter Arm
         if (fehler >= 3)
             g2.drawLine(200, 140, 170, 160);
 
-        // Rechter Arm
+        // Linker Arm
         if (fehler >= 4)
             g2.drawLine(200, 140, 230, 160);
 
-        // Linkes Bein
+        // Rechtes Bein
         if (fehler >= 5)
             g2.drawLine(200, 180, 170, 210);
 
-        // Rechtes Bein
+        // Linkes Bein
         if (fehler >= 6)
             g2.drawLine(200, 180, 230, 210);
     }
