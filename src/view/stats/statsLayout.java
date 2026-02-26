@@ -1,5 +1,6 @@
 package view.stats;
 
+import view.DrawPieChart;
 import view.RoundedButtonUI;
 
 import javax.swing.*;
@@ -90,27 +91,7 @@ public class statsLayout extends JPanel {
         this.leftSection.add(menuPanel, BorderLayout.SOUTH);
 
         // Configure chart panel (right side) - placeholder circle that fills the space
-        this.chartPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON);
-
-                // Calculate diameter to fill the available space
-                int width = getWidth();
-                int height = getHeight();
-                int diameter = (int)(Math.min(width, height) * 0.95); // Use 95% of available space
-                int x = (width - diameter) / 2;
-                int y = (height - diameter) / 2;
-
-                // Draw placeholder circle
-                g2d.setColor(Color.LIGHT_GRAY);
-                g2d.fillOval(x, y, diameter, diameter);
-            }
-        };
-        this.chartPanel.setBackground(Color.WHITE);
+        this.chartPanel = new DrawPieChart();
 
         // Add left section and chart to content panel
         this.contentPanel.add(leftSection);

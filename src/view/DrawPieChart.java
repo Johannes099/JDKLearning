@@ -1,23 +1,32 @@
 package view;
 
+import model.eingabe.CsvReader;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class DrawPieChart extends JPanel {
     private int errors;
     private int correct;
     private int skipped;
     private int total;
+    private final CsvReader reader = new CsvReader("errors.csv");
 
     // Colors for each section
     private static final Color CORRECT_COLOR = new Color(76, 175, 80);  // Green
     private static final Color ERROR_COLOR = new Color(244, 67, 54);    // Red
     private static final Color SKIPPED_COLOR = new Color(158, 158, 158); // Gray
 
-    public DrawPieChart(int errors, int correct, int skipped) {
-        this.errors = errors;
-        this.correct = correct;
-        this.skipped = skipped;
+    public DrawPieChart() {
+        try {
+            this.errors = Integer.parseInt(reader.read(0, 0));
+            this.correct = Integer.parseInt(reader.read(0, 1));
+        }catch (IOException ex){
+            JOptionPane.showMessageDialog(this, "Fehler beim Lesen: " + ex.getMessage());
+            return;
+        }
+        this.skipped = 0;
         this.total = errors + correct + skipped;
 
         setPreferredSize(new Dimension(300, 300));

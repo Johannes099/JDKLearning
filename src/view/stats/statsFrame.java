@@ -9,7 +9,7 @@ public class statsFrame extends JFrame {
         this.setTitle("JDKLearning Tool");
 
         this.setSize(1500, 800);
-        this.   setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         this.add(statsLayout);
         this.setVisible(true);
 
