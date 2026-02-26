@@ -122,6 +122,12 @@ public class statsLayout extends JPanel {
         // Add all to main panel
         this.add(headings);
         this.add(stats);
+
+        menu.addActionListener(mn -> {
+            java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+            if (w != null) w.dispose();
+            new view.menu.menuFrame();
+        });
     }
 
     private JPanel createLegendItem(String text, Color color) {
@@ -143,5 +149,6 @@ public class statsLayout extends JPanel {
         panel.add(label);
 
         return panel;
+
     }
 }

@@ -89,4 +89,6 @@ public class QuizLayout {
     public JLabel getFrage() { return frage; }
     public JTextField getAntwort() { return antwort; }
     public JLabel getTitleLabel() { return titleLabel; }
+    public void setFrage(String frage) { this.frage.setText(frage); }
+    public void setWeiter(String text) {this.weiter.setText(text);}
 }

@@ -1,6 +1,7 @@
 package model.eingabe;
 
 import java.io.*;
+import java.util.StringJoiner;
 
 public class CsvWriter {
     private final File file;
@@ -9,17 +10,25 @@ public class CsvWriter {
         this.file = new File(path);
     }
 
-    public void appendRow(String frage, String antwort) throws IOException {
+    public void appendRow(String... values) throws IOException {
         boolean newFile = !file.exists();
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
             if (newFile) {
-                bw.write("frage,antwort");
+                // build header: col0, col1, col2, ...
+                StringJoiner header = new StringJoiner(",");
+                for (int i = 0; i < values.length; i++) {
+                    header.add("col" + i);
+                }
+                bw.write(header.toString());
                 bw.newLine();
             }
-            bw.write(toCsv(frage));
-            bw.write(",");
-            bw.write(toCsv(antwort));
+
+            StringJoiner row = new StringJoiner(",");
+            for (String value : values) {
+                row.add(toCsv(value));
+            }
+            bw.write(row.toString());
             bw.newLine();
         }
     }

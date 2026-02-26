@@ -1,6 +1,6 @@
 package view.quiz;
 
-import view.eingabe.EingabeController;
+import view.quiz.QuizController;
 
 import javax.swing.*;
 
@@ -13,7 +13,7 @@ public class QuizFrame extends JFrame {
         QuizLayout layout = new QuizLayout();
         setContentPane(layout.buildPanel());
 
-//        new QuizController(layout, this, "fragen.csv");
+        new QuizController(layout, this);
 
         setSize(1500, 800);
         setLocationRelativeTo(null);
