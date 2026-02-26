@@ -12,6 +12,7 @@ import java.io.IOException;
 public class QuizController {
     private final QuizLayout ui;
     private final CsvReader reader = new CsvReader("fragen.csv");
+    private final CsvWriter writer = new CsvWriter("errors.csv");
     private final JFrame frame;
     private int frageNummer = 0; // fix: was 1, rows are 0-indexed
     int falsch = 0;
@@ -61,6 +62,13 @@ public class QuizController {
                 return;
             }
             frame.dispose();
+            try {
+                writer.replaceFirstRow(Integer.toString(this.falsch), Integer.toString(this.richtig));
+            }catch (IOException ex) {
+                JOptionPane.showMessageDialog(frame, "Fehler beim Schreiben: " + ex.getMessage());
+                return;
+            }
+
             new ErrorsFrame(this.richtig, this.falsch);
             return;
         }
