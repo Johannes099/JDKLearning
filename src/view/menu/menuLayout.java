@@ -129,5 +129,12 @@ public class menuLayout extends JPanel {
             if (w != null) w.dispose();
             new view.errors.ErrorsFrame();
         });
+        game.addActionListener(e -> {
+            java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+            if (w != null) w.dispose();
+
+            new view.game.GameSetupFrame();
+        });
+
     }
 }
