@@ -1,9 +1,8 @@
 package view.errors;
-
-import model.eingabe.CsvReader;
-
 import javax.swing.*;
 import java.io.IOException;
+import model.eingabe.CsvReader;
+import view.menu.menuFrame;
 
 public class ErrorsFrame extends JFrame {
     private final CsvReader reader = new CsvReader("errors.csv");
@@ -16,12 +15,21 @@ public class ErrorsFrame extends JFrame {
 
         ErrorsLayout layout = new ErrorsLayout();
         try{
-            this.richtigZP = Integer.parseInt(reader.read(0, 1));
-            this.falschZP = Integer.parseInt(reader.read(0, 0));
+            if((reader.read(0, 1) != null) && (reader.read(0, 0)!= null)) {
+                this.richtigZP = Integer.parseInt(reader.read(0, 1));
+                this.falschZP = Integer.parseInt(reader.read(0, 0));
+
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Keine Gespeicherten Daten! Bitte starten Sie zuerst ein Quiz:");
+                this.dispose();
+                menuFrame menu = new menuFrame();
+            }
         }catch (IOException ex){
             JOptionPane.showMessageDialog(this, "Fehler beim Lesen: " + ex.getMessage());
             return;
         }
+
         layout.setRichtig(richtigZP);
         layout.setFalsch(falschZP);
         setContentPane(layout);
