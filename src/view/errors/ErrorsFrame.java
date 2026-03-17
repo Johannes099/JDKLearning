@@ -15,10 +15,11 @@ public class ErrorsFrame extends JFrame {
 
         ErrorsLayout layout = new ErrorsLayout();
         try{
-            if((reader.read(0, 1) != null) && (reader.read(0, 0)!= null)) {
-                this.richtigZP = Integer.parseInt(reader.read(0, 1));
-                this.falschZP = Integer.parseInt(reader.read(0, 0));
-
+            String richtigStr = reader.read(0, 1);
+            String falschStr = reader.read(0, 0);
+            if(richtigStr != null && falschStr != null) {
+                this.richtigZP = Integer.parseInt(richtigStr);
+                this.falschZP = Integer.parseInt(falschStr);
             }
             else {
                 JOptionPane.showMessageDialog(this, "Keine Gespeicherten Daten! Bitte starten Sie zuerst ein Quiz:");

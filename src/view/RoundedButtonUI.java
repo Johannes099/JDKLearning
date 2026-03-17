@@ -36,9 +36,10 @@ public class RoundedButtonUI extends BasicButtonUI {
         // Text
         g2.setColor(b.getForeground());
         FontMetrics fm = g2.getFontMetrics();
-        int x = (c.getWidth() - fm.stringWidth(b.getText())) / 2;
+        String text = b.getText() != null ? b.getText() : "";
+        int x = (c.getWidth() - fm.stringWidth(text)) / 2;
         int y = (c.getHeight() + fm.getAscent()) / 2 - 2;
-        g2.drawString(b.getText(), x, y);
+        g2.drawString(text, x, y);
 
         g2.dispose();
     }

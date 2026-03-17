@@ -20,8 +20,14 @@ public class DrawPieChart extends JPanel {
 
     public DrawPieChart() {
         try {
-            this.errors = Integer.parseInt(reader.read(0, 0));
-            this.correct = Integer.parseInt(reader.read(0, 1));
+            String errorsStr = reader.read(0, 0);
+            String correctStr = reader.read(0, 1);
+            if (errorsStr == null || correctStr == null) {
+                JOptionPane.showMessageDialog(this, "Keine gespeicherten Daten vorhanden.");
+                return;
+            }
+            this.errors = Integer.parseInt(errorsStr);
+            this.correct = Integer.parseInt(correctStr);
         }catch (IOException ex){
             JOptionPane.showMessageDialog(this, "Fehler beim Lesen: " + ex.getMessage());
             return;
