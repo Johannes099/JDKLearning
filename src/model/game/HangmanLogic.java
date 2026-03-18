@@ -8,6 +8,7 @@ public class HangmanLogic {
     private int fehler;
 
     public HangmanLogic(String wort){
+        if (wort == null) throw new IllegalArgumentException("wort darf nicht null sein");
         this.wort = wort.toLowerCase();
         this.buchstaben = this.wort.toCharArray();
         this.sichtbar = new boolean[buchstaben.length];
